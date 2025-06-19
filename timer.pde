@@ -1,33 +1,6 @@
 import processing.video.*;
 
-Capture cam;
-
-int turn = 1;  
-int turn1Count = 0;
-int turn2Count = 0;
-int turnTime = 10;    
-int remainingTime;
-int turnStartMillis;
-
-PFont font;
-
 void setup() {
-  size(640, 480);
-  
-  font = createFont("MS Gothic", 20); 
-  textFont(font);
-  textAlign(CENTER, CENTER);
-
-
-  String[] cameras = Capture.list();
-  if (cameras.length == 0) {
-    println("カメラが見つかりませんでした。");
-    exit();
-  } else {
-    cam = new Capture(this, cameras[0]);
-    cam.start();
-  }
-
   turnStartMillis = millis();
   turn1Count = 1;  
 }
