@@ -1,16 +1,5 @@
 import processing.video.*;
 
-Capture cam;
-
-int turn = 1;  
-int turn1Count = 0;
-int turn2Count = 0;
-int turnTime = 10;    
-int remainingTime;
-int turnStartMillis;
-
-PFont font;
-
 void setup() {
   size(640, 480);
   
