@@ -1,22 +1,6 @@
 import processing.video.*;
 
 void setup() {
-  size(640, 480);
-  
-  font = createFont("MS Gothic", 20); 
-  textFont(font);
-  textAlign(CENTER, CENTER);
-
-
-  String[] cameras = Capture.list();
-  if (cameras.length == 0) {
-    println("カメラが見つかりませんでした。");
-    exit();
-  } else {
-    cam = new Capture(this, cameras[0]);
-    cam.start();
-  }
-
   turnStartMillis = millis();
   turn1Count = 1;  
 }

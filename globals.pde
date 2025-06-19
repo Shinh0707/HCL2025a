@@ -10,10 +10,10 @@ Magic[] magics = new Magic[MAGIC_COUNT];
 
 int lastChange = 0;
 
-int turn = 1;  
+int turn = 1;
 int turn1Count = 0;
 int turn2Count = 0;
-int turnTime = 10;    
+int turnTime = 10;
 int remainingTime;
 int turnStartMillis;
 
