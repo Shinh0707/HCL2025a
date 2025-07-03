@@ -1,0 +1,498 @@
+Detected Marker 8
+[ 468.27225, 291.44397, 0.0 ]
+Detected Marker 9
+[ 433.88773, 404.87173, 0.0 ]
+Detected Marker 3
+[ 600.14526, 354.8202, 0.0 ]
+Detected Marker 4
+[ 189.89717, 349.86697, 0.0 ]
+Detected Marker 5
+[ 543.11194, 369.40414, 0.0 ]
+Detected Marker 6
+[ 520.13184, 275.52393, 0.0 ]
+Detected Marker 7
+[ 489.68713, 388.27063, 0.0 ]
+Detected Marker 8
+[ 468.3745, 291.09592, 0.0 ]
+Detected Marker 9
+[ 433.702, 404.42926, 0.0 ]
+Detected Marker 3
+[ 600.1554, 354.82504, 0.0 ]
+Detected Marker 4
+[ 189.89659, 349.8668, 0.0 ]
+Detected Marker 5
+[ 543.11194, 369.40414, 0.0 ]
+Detected Marker 6
+[ 520.13184, 275.52393, 0.0 ]
+Detected Marker 7
+[ 489.68713, 388.27063, 0.0 ]
+Detected Marker 8
+[ 468.3745, 291.09592, 0.0 ]
+Detected Marker 9
+[ 433.702, 404.42926, 0.0 ]
+Detected Marker 3
+[ 600.0839, 355.1433, 0.0 ]
+Detected Marker 4
+[ 189.78972, 350.09137, 0.0 ]
+Detected Marker 5
+[ 543.11194, 369.40414, 0.0 ]
+Detected Marker 6
+[ 520.13184, 275.52393, 0.0 ]
+Detected Marker 7
+[ 489.90952, 388.13644, 0.0 ]
+Detected Marker 8
+[ 467.9537, 291.04797, 0.0 ]
+Detected Marker 9
+[ 433.702, 404.42926, 0.0 ]
+Detected Marker 3
+[ 600.09247, 355.14615, 0.0 ]
+Detected Marker 4
+[ 189.78325, 350.09042, 0.0 ]
+Detected Marker 5
+[ 543.11194, 369.40414, 0.0 ]
+Detected Marker 6
+[ 520.13184, 275.52393, 0.0 ]
+Detected Marker 7
+[ 489.90952, 388.13644, 0.0 ]
+Detected Marker 8
+[ 467.9537, 291.04797, 0.0 ]
+Detected Marker 9
+[ 433.702, 404.42926, 0.0 ]
+Detected Marker 3
+[ 599.89575, 355.51038, 0.0 ]
+Detected Marker 4
+[ 189.90623, 350.38757, 0.0 ]
+Detected Marker 5
+[ 543.225, 369.61777, 0.0 ]
+Detected Marker 6
+[ 519.57983, 275.64978, 0.0 ]
+Detected Marker 7
+[ 489.90952, 388.13644, 0.0 ]
+Detected Marker 8
+[ 467.9537, 291.04797, 0.0 ]
+Detected Marker 9
+[ 434.01385, 404.51428, 0.0 ]
+Detected Marker 3
+[ 599.8855, 355.5165, 0.0 ]
+Detected Marker 4
+[ 189.89551, 350.38617, 0.0 ]
+Detected Marker 5
+[ 543.225, 369.61777, 0.0 ]
+Detected Marker 6
+[ 519.57983, 275.64978, 0.0 ]
+Detected Marker 7
+[ 489.90952, 388.13644, 0.0 ]
+Detected Marker 8
+[ 467.9537, 291.04797, 0.0 ]
+Detected Marker 9
+[ 434.01385, 404.51428, 0.0 ]
+Detected Marker 3
+[ 599.8806, 355.51877, 0.0 ]
+Detected Marker 4
+[ 189.88924, 350.38535, 0.0 ]
+Detected Marker 5
+[ 543.225, 369.61777, 0.0 ]
+Detected Marker 6
+[ 519.57983, 275.64978, 0.0 ]
+Detected Marker 7
+[ 489.90952, 388.13644, 0.0 ]
+Detected Marker 8
+[ 467.9537, 291.04797, 0.0 ]
+Detected Marker 9
+[ 434.01385, 404.51428, 0.0 ]
+Detected Marker 3
+[ 599.71045, 355.5803, 0.0 ]
+Detected Marker 4
+[ 189.8087, 350.6235, 0.0 ]
+Detected Marker 5
+[ 542.95416, 369.6964, 0.0 ]
+Detected Marker 6
+[ 520.0721, 275.622, 0.0 ]
+Detected Marker 7
+[ 489.68887, 388.2677, 0.0 ]
+Detected Marker 8
+[ 468.0859, 291.81503, 0.0 ]
+Detected Marker 9
+[ 433.88773, 404.87173, 0.0 ]
+Detected Marker 3
+[ 599.7325, 355.57697, 0.0 ]
+Detected Marker 4
+[ 189.78662, 350.62015, 0.0 ]
+Detected Marker 5
+[ 542.95416, 369.6964, 0.0 ]
+Detected Marker 6
+[ 520.0721, 275.622, 0.0 ]
+Detected Marker 7
+[ 489.68887, 388.2677, 0.0 ]
+Detected Marker 8
+[ 468.0859, 291.81503, 0.0 ]
+Detected Marker 9
+[ 433.88773, 404.87173, 0.0 ]
+Detected Marker 3
+[ 599.75085, 355.57312, 0.0 ]
+Detected Marker 4
+[ 189.7997, 350.61145, 0.0 ]
+Detected Marker 5
+[ 542.95416, 369.6964, 0.0 ]
+Detected Marker 6
+[ 519.8599, 275.75955, 0.0 ]
+Detected Marker 7
+[ 489.68887, 388.2677, 0.0 ]
+Detected Marker 8
+[ 468.0859, 291.81503, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.7723, 355.56906, 0.0 ]
+Detected Marker 4
+[ 189.78491, 350.60974, 0.0 ]
+Detected Marker 5
+[ 542.95416, 369.6964, 0.0 ]
+Detected Marker 6
+[ 519.8599, 275.75955, 0.0 ]
+Detected Marker 7
+[ 489.68887, 388.2677, 0.0 ]
+Detected Marker 8
+[ 468.0859, 291.81503, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.68744, 355.5839, 0.0 ]
+Detected Marker 4
+[ 189.7911, 350.61377, 0.0 ]
+Detected Marker 5
+[ 542.95416, 369.6964, 0.0 ]
+Detected Marker 6
+[ 520.0716, 275.61694, 0.0 ]
+Detected Marker 7
+[ 489.4665, 388.4019, 0.0 ]
+Detected Marker 8
+[ 468.0859, 291.81503, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.6821, 355.5859, 0.0 ]
+Detected Marker 4
+[ 189.78685, 350.61273, 0.0 ]
+Detected Marker 5
+[ 542.95416, 369.6964, 0.0 ]
+Detected Marker 6
+[ 520.0716, 275.61694, 0.0 ]
+Detected Marker 7
+[ 489.4665, 388.4019, 0.0 ]
+Detected Marker 8
+[ 468.0859, 291.81503, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.71716, 355.54916, 0.0 ]
+Detected Marker 4
+[ 189.8168, 350.87305, 0.0 ]
+Detected Marker 5
+[ 543.16315, 369.52148, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.74762, 388.19818, 0.0 ]
+Detected Marker 8
+[ 467.96768, 291.82755, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.66223, 355.56042, 0.0 ]
+Detected Marker 4
+[ 190.09428, 350.92532, 0.0 ]
+Detected Marker 5
+[ 543.16315, 369.52148, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.74762, 388.19818, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.6561, 355.56528, 0.0 ]
+Detected Marker 4
+[ 190.11798, 350.92877, 0.0 ]
+Detected Marker 5
+[ 543.16315, 369.52148, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.74762, 388.19818, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.56616, 355.55185, 0.0 ]
+Detected Marker 4
+[ 189.94617, 351.09708, 0.0 ]
+Detected Marker 5
+[ 543.16315, 369.52148, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.74762, 388.19818, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.58124, 355.54813, 0.0 ]
+Detected Marker 4
+[ 189.96663, 351.10007, 0.0 ]
+Detected Marker 5
+[ 543.16315, 369.52148, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.74762, 388.19818, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.98157, 405.09595, 0.0 ]
+Detected Marker 3
+[ 599.98303, 355.34677, 0.0 ]
+Detected Marker 4
+[ 189.77454, 351.0169, 0.0 ]
+Detected Marker 5
+[ 542.5986, 369.77313, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.83932, 388.4202, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.54913, 405.23706, 0.0 ]
+Detected Marker 3
+[ 600.0013, 355.34036, 0.0 ]
+Detected Marker 4
+[ 189.79695, 351.02, 0.0 ]
+Detected Marker 5
+[ 542.5986, 369.77313, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.83932, 388.4202, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.54913, 405.23706, 0.0 ]
+Detected Marker 3
+[ 600.01154, 355.3377, 0.0 ]
+Detected Marker 4
+[ 189.80876, 351.02158, 0.0 ]
+Detected Marker 5
+[ 542.5986, 369.77313, 0.0 ]
+Detected Marker 6
+[ 519.63947, 275.64758, 0.0 ]
+Detected Marker 7
+[ 489.83932, 388.4202, 0.0 ]
+Detected Marker 8
+[ 468.17813, 291.68753, 0.0 ]
+Detected Marker 9
+[ 433.54913, 405.23706, 0.0 ]
+Detected Marker 3
+[ 599.85925, 355.8191, 0.0 ]
+Detected Marker 4
+[ 189.90657, 350.49948, 0.0 ]
+Detected Marker 5
+[ 543.4917, 370.0178, 0.0 ]
+Detected Marker 6
+[ 520.31647, 276.1909, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.68066, 291.9282, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 599.90515, 355.81302, 0.0 ]
+Detected Marker 4
+[ 189.91646, 350.50085, 0.0 ]
+Detected Marker 5
+[ 543.4917, 370.0178, 0.0 ]
+Detected Marker 6
+[ 520.31647, 276.1909, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.68066, 291.9282, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 599.9167, 355.8454, 0.0 ]
+Detected Marker 4
+[ 189.68927, 350.42435, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 599.9455, 355.846, 0.0 ]
+Detected Marker 4
+[ 189.70105, 350.42566, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.08563, 355.74792, 0.0 ]
+Detected Marker 4
+[ 189.69557, 350.42886, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.62115, 276.46902, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.0873, 355.74417, 0.0 ]
+Detected Marker 4
+[ 189.69945, 350.4296, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.62115, 276.46902, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.09924, 355.76096, 0.0 ]
+Detected Marker 4
+[ 189.72339, 350.43448, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.0993, 355.7636, 0.0 ]
+Detected Marker 4
+[ 189.73131, 350.43536, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.10095, 355.76453, 0.0 ]
+Detected Marker 4
+[ 189.73468, 350.43573, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+main activated
+timer activated
+timer activated
+hack activated
+Detected Marker 3
+[ 600.10095, 355.76453, 0.0 ]
+Detected Marker 4
+[ 189.73468, 350.43573, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.10095, 355.76453, 0.0 ]
+Detected Marker 4
+[ 189.73468, 350.43573, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.10095, 355.76453, 0.0 ]
+Detected Marker 4
+[ 189.73468, 350.43573, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.10095, 355.76453, 0.0 ]
+Detected Marker 4
+[ 189.73468, 350.43573, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
+Detected Marker 3
+[ 600.10095, 355.76453, 0.0 ]
+Detected Marker 4
+[ 189.73468, 350.43573, 0.0 ]
+Detected Marker 5
+[ 543.37305, 370.39914, 0.0 ]
+Detected Marker 6
+[ 520.8421, 276.3292, 0.0 ]
+Detected Marker 7
+[ 489.80466, 389.17795, 0.0 ]
+Detected Marker 8
+[ 468.79395, 292.14557, 0.0 ]
+Detected Marker 9
+[ 434.0904, 405.74014, 0.0 ]
