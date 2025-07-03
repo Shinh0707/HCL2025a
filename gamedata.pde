@@ -52,6 +52,7 @@ class GameSettings{
 
 class Player{
     int detected_id = -1;
+    PVector markerPos = new PVector(0,0,0);
     float hp;
 
     Player(int maxHp){
@@ -64,7 +65,8 @@ class Player{
     boolean isDetected(){
         return detected_id != -1;
     }
-    void detect(int id){
+    void detect(int id, PVector pos){
         detected_id = id;
+        markerPos = pos;
     }
 }

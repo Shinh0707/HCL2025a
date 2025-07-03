@@ -52,7 +52,7 @@ class StandbyPhase extends TimerPhase{
 
 class CodingPhase extends TimerPhase{
     float maxTime(){
-        return 45.0;
+        return 1.0;
     }
     void _draw(GameData data){
         image(data.cam, 0, 0);
@@ -123,7 +123,7 @@ class HackPhase extends Phase{
                     if (center.x < width/2){
                         println("[L] Detected Marker "+i);
                         circle(center.x, center.y, 50);
-                        data.players[0].detect(i);
+                        data.players[0].detect(i, center);
                         interval = 2;
                     }
                 });
@@ -141,7 +141,7 @@ class HackPhase extends Phase{
                 if (center.x > width/2){
                     println("[R] Detected Marker "+i);
                     circle(center.x, center.y, 50);
-                    data.players[1].detect(i);
+                    data.players[1].detect(i, center);
                     interval = 2;
                 }
             });
@@ -162,12 +162,53 @@ class HackPhase extends Phase{
 }
 
 class EffectPhase extends Phase{
+    int startTime = 0;
+    int maxTime = 5*1000;
     void reset(GameData data){
         println("effect activated");
+        startTime = millis();
+    }
+    int remainTime(){
+        return maxTime - (millis() - startTime);
     }
     boolean draw(GameData data){
-        // 効果に応じてプレイヤーのステータス変化
-        // エフェクトも出す
-        return true;
+      data.nya.detect(data.cam); // これをはじめに呼び出す
+      PVector center0 = data.players[0].markerPos;// 画面上でのマーカーの中心位置
+      PVector center1 = data.players[1].markerPos;// 画面上でのマーカーの中心位置
+      if (data.players[0].isDetected()){
+        if (data.players[0].detected_id == 0){
+            drawAction0(data, center0, center1);
+        }else if(data.players[0].detected_id == 1){
+            drawAction1(data, center0, center1);
+        }// 同様に作成
+      }
+      if (data.players[1].isDetected()){
+        if (data.players[1].detected_id == 0){
+            drawAction0(data, center1, center0); // center 入れ替え
+        }else if(data.players[1].detected_id == 1){
+            drawAction1(data, center1, center0); // center 入れ替え
+        }// 同様に作成
+      }
+      // 各エフェクトにつき1つの関数を作成する
+      return remainTime() < 0;
+  }
+}
+
+void drawAction0(GameData data, PVector player, PVector opponent){
+    if (data.nya.isExist(0)){  // ARマーカーが認識されていれば(必須), 0はマーカーID
+        data.nya.beginTransform(0);// 0はマーカーID
+        noStroke();
+        lights();
+        translate(232, 192, 0);
+        sphere(112);
+        data.nya.endTransform();
+    } // ↑3D表示するならここの中でかく
+    for(int i = 0; i < 5; i++){
+        fill(255,255,255);
+        rect(
+        int(player.x + random(-width/10,width/10)),
+        int(player.y + random(-height/10,height/10)),
+        3*(i+1), 3*(i+1));
     }
+    // ↑いい感じのエフェクト
 }
