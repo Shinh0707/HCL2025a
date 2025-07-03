@@ -7,18 +7,19 @@ void setup(){
     colorMode(RGB, 255);
     println(MultiMarker.VERSION);
     data = new GameData(this);
-    phases = new Phase[4];
+    phases = new Phase[5];
     phases[0] = new GamePhase();
     phases[1] = new StandbyPhase();
     phases[2] = new CodingPhase();
     phases[3] = new HackPhase();
+    phases[4] = new EffectPhase();
     phase_i = 0;
 }
 
 void draw(){
     data.draw();
     if(phases[phase_i].draw(data)){
-        phase_i = (phase_i + 1)%4;
+        phase_i = (phase_i + 1)%5;
         phases[phase_i].reset(data);
     }
 }
