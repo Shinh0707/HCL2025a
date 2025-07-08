@@ -22,4 +22,5 @@ void draw(){
         phase_i = (phase_i + 1)%5;
         phases[phase_i].reset(data);
     }
+    data.pastdraw();
 }
