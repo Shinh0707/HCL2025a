@@ -9,7 +9,6 @@ void setup(){
     //colorMode(RGB, 255);
     size(1080, 780, P3D);
     smooth();
-    frameRate(60);
     colorMode(RGB, 255);
     println(MultiMarker.VERSION);
     scn = new StartScreen();
@@ -22,6 +21,7 @@ void setup(){
     phases[3] = new HackPhase();
     phases[4] = new EffectPhase();
     phase_i = 0;
+    frameRate(60);
 }
 
 void draw(){

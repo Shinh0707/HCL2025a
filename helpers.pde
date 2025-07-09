@@ -1,17 +1,16 @@
 import processing.video.*;
 import jp.nyatla.nyar4psg.*;
 
-Capture setupCamera(PApplet parent, int frameRate){
+Capture setupCamera(PApplet parent, int _frameRate){
     String[] cameras = Capture.list();
     if (cameras.length != 0) {
-        println(cameras);
         for (String camera : cameras){
+            println(camera);
             if (camera.indexOf("Virtual Camera") != -1){
                 continue;
             }
             println("Use Camera ["+camera+"]");
-            Capture cam = new Capture(parent, width, height, camera, frameRate);
-            return cam;
+            return new Capture(parent, width, height, camera, _frameRate);
         }
     }
     println("カメラが見つかりませんでした。");

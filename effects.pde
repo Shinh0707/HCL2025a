@@ -450,19 +450,16 @@ class EffectData6 extends EffectData {
 
 
 class EffectData7 extends EffectData {
-  PVector from, to;
   int durationFrames;
   int frame;
 
   EffectData7() {
     this.durationFrames = 120;
-    duration = durationFrames * (1000f / 60f);
+    duration = durationFrames*1000f/60f;
   }
 
   void onStart() {
     frame = 0;
-    from = playerPos.copy();
-    to = opponentPos.copy();
   }
 
   boolean draw(GameData data) {
@@ -471,24 +468,24 @@ class EffectData7 extends EffectData {
 
     // 軌道の乱れ（時間と共にやや安定）
     float offset = 10 * sin(frame * 0.3f) * (1 - t * 0.5f);
-    PVector chaoticTo = new PVector(to.x + random(-offset, offset), to.y + random(-offset, offset));
+    PVector chaoticTo = new PVector(opponentPos.x + random(-offset, offset), opponentPos.y + random(-offset, offset));
 
     // ビーム（中心白→赤→紫の三重構造）
     strokeWeight(12);
     stroke(160, 0, 255, alpha * 0.4f);
-    line(from.x, from.y, chaoticTo.x, chaoticTo.y);
+    line(playerPos.x, playerPos.y, chaoticTo.x, chaoticTo.y);
 
     strokeWeight(6);
     stroke(255, 50, 100, alpha * 0.7f);
-    line(from.x, from.y, chaoticTo.x, chaoticTo.y);
+    line(playerPos.x, playerPos.y, chaoticTo.x, chaoticTo.y);
 
     strokeWeight(3);
     stroke(255, 255, 255, alpha);
-    line(from.x, from.y, chaoticTo.x, chaoticTo.y);
+    line(playerPos.x, playerPos.y, chaoticTo.x, chaoticTo.y);
 
     // 発射元の魔方陣
     pushMatrix();
-    translate(from.x, from.y);
+    translate(playerPos.x, playerPos.y);
     rotate(frame * 0.05f);
     stroke(255, 0, 100, alpha * 0.6f);
     noFill();
@@ -505,7 +502,7 @@ class EffectData7 extends EffectData {
         stroke(255, 80, 255, alpha * (1.0f - i * 0.2f));
         noFill();
         strokeWeight(1.5f);
-        ellipse(to.x, to.y, ringR, ringR);
+        ellipse(opponentPos.x, opponentPos.y, ringR, ringR);
       }
     }
 
@@ -513,11 +510,11 @@ class EffectData7 extends EffectData {
     for (int i = 0; i < 25; i++) {
       float angle = random(TWO_PI);
       float len = random(10, 35);
-      float x1 = to.x + cos(angle) * len;
-      float y1 = to.y + sin(angle) * len;
+      float x1 = opponentPos.x + cos(angle) * len;
+      float y1 = opponentPos.y + sin(angle) * len;
       stroke(255, 100, 255, alpha * 0.5f);
       strokeWeight(1);
-      line(to.x, to.y, x1, y1);
+      line(opponentPos.x, opponentPos.y, x1, y1);
     }
 
     frame++;
@@ -542,42 +539,121 @@ class EffectData8 extends EffectData {
     float t = frame / (float)durationFrames;
     float alpha = 255 * sin(t * PI);
 
-    // 吸収ビーム（相手からプレイヤーへ）
-    strokeWeight(10);
-    stroke(100, 150, 255, alpha * 0.6f);
-    line(opponentPos.x, opponentPos.y, lerp(opponentPos.x, playerPos.x, t), lerp(opponentPos.y, playerPos.y, t));
+    if (frame < 60) {
+      // 吸収パート（既存）
+      strokeWeight(10);
+      stroke(100, 150, 255, alpha * 0.6f);
+      line(opponentPos.x, opponentPos.y, lerp(opponentPos.x, playerPos.x, t*2), lerp(opponentPos.y, playerPos.y, t*2));
 
-    strokeWeight(4);
-    stroke(180, 220, 255, alpha);
-    line(opponentPos.x, opponentPos.y, lerp(opponentPos.x, playerPos.x, t), lerp(opponentPos.y, playerPos.y, t));
 
-    // プレイヤー付近にエネルギーの渦巻き
-    pushMatrix();
-    translate(playerPos.x, playerPos.y);
-    noFill();
-    stroke(150, 200, 255, alpha);
-    strokeWeight(2 + 2 * sin(frame * 0.2f));
-    for (int i = 0; i < 3; i++) {
-      float r = 20 + 10 * i + 5 * sin(frame * 0.15f + i);
-      ellipse(0, 0, r + frame * 0.5f, r + frame * 0.5f);
-    }
-    popMatrix();
+      strokeWeight(4);
+      stroke(180, 220, 255, alpha);
+      line(opponentPos.x, opponentPos.y, lerp(opponentPos.x, playerPos.x, t*2), lerp(opponentPos.y, playerPos.y, t*2));
 
-    // 中間地点の小爆発
-    if (t > 0.5f) {
-      int sparks = 20;
-      PVector mid = new PVector(
-        lerp(opponentPos.x, playerPos.x, t),
-        lerp(opponentPos.y, playerPos.y, t)
+
+      // 渦巻き吸収
+      pushMatrix();
+      translate(playerPos.x, playerPos.y);
+      noFill();
+      stroke(150, 200, 255, alpha);
+      strokeWeight(2 + 2 * sin(frame * 0.2f));
+      for (int i = 0; i < 3; i++) {
+        float r = 20 + 10 * i + 5 * sin(frame * 0.15f + i);
+        ellipse(0, 0, r + frame * 0.5f, r + frame * 0.5f);
+      }
+      popMatrix();
+
+
+      // 小爆発
+      if (t > 0.25) {
+        int sparks = 20;
+        PVector mid = new PVector(
+          lerp(opponentPos.x, playerPos.x, t*2),
+          lerp(opponentPos.y, playerPos.y, t*2)
+        );
+        for (int i = 0; i < sparks; i++) {
+          float angle = TWO_PI / sparks * i + frame * 0.3f;
+          float len = 10 + 5 * sin(frame * 0.4f + i);
+          float x = mid.x + cos(angle) * len;
+          float y = mid.y + sin(angle) * len;
+          stroke(150, 200, 255, alpha * 0.8f);
+          strokeWeight(1.5f);
+          line(mid.x, mid.y, x, y);
+        }
+      }
+
+
+    } else if (frame < 90) {
+      // チャージパート（光り始める）
+      float chargeT = map(frame, 60, 90, 0, 1);
+      float glow = 100 + 155 * sin(chargeT * PI);
+      fill(255, 255, 100, glow);
+      noStroke();
+      ellipse(playerPos.x, playerPos.y, 40 + 20 * sin(chargeT * PI), 40 + 20 * sin(chargeT * PI));
+
+
+    } else {
+      // 発散攻撃（超極太ビーム）
+      float attackT = map(frame, 90, durationFrames, 0, 1);
+      float beamAlpha = 255 * (1 - attackT);
+
+
+      PVector beamEnd = new PVector(
+        lerp(playerPos.x, opponentPos.x, attackT),
+        lerp(playerPos.y, opponentPos.y, attackT)
       );
-      for (int i = 0; i < sparks; i++) {
-        float angle = TWO_PI / sparks * i + frame * 0.3f;
-        float len = 10 + 5 * sin(frame * 0.4f + i);
-        float x = mid.x + cos(angle) * len;
-        float y = mid.y + sin(angle) * len;
-        stroke(150, 200, 255, alpha * (1 - (t - 0.5f) * 2));
-        strokeWeight(1.5f);
-        line(mid.x, mid.y, x, y);
+
+
+      // 外層グロー（極太）
+      strokeWeight(50);
+      stroke(255, 150, 30, beamAlpha * 0.15f);  // 薄めで太く
+      line(playerPos.x, playerPos.y, beamEnd.x, beamEnd.y);
+
+
+      // 中間エネルギー層
+      strokeWeight(30);
+      stroke(255, 220, 60, beamAlpha * 0.4f);
+      line(playerPos.x, playerPos.y, beamEnd.x, beamEnd.y);
+
+
+      // 内側のビームコア（明るく、真っ直ぐ）
+      strokeWeight(12);
+      stroke(255, 255, 255, beamAlpha);
+      line(playerPos.x, playerPos.y, beamEnd.x, beamEnd.y);
+
+
+      // 稲妻副線（ブレを大きく）
+      int zaps = 8;
+      for (int i = 0; i < zaps; i++) {
+        float off = sin(frame * 0.3f + i) * 15;
+        PVector zapStart = PVector.lerp(playerPos, beamEnd, i / (float)zaps);
+        PVector zapEnd = PVector.lerp(playerPos, beamEnd, (i + 1) / (float)zaps);
+        zapEnd.add(random(-12, 12), random(-12, 12));
+        stroke(255, 200, 100, beamAlpha * 0.4f);
+        strokeWeight(4);
+        line(zapStart.x + off, zapStart.y - off, zapEnd.x - off, zapEnd.y + off);
+      }
+
+
+      // 着弾点で爆発 + フラッシュ
+      if (attackT > 0.8) {
+        PVector hitPos = beamEnd;
+        int num = 50;
+        for (int i = 0; i < num; i++) {
+          float angle = TWO_PI * i / num + frame * 0.1f;
+          float len = 40 + 25 * sin(frame * 0.25f + i);
+          float x = hitPos.x + cos(angle) * len;
+          float y = hitPos.y + sin(angle) * len;
+          stroke(255, 240, 120, beamAlpha);
+          strokeWeight(4);
+          line(hitPos.x, hitPos.y, x, y);
+        }
+
+
+        // フラッシュで画面全体が白く光る
+        fill(255, 255, 255, beamAlpha * 120);
+        noStroke();
+        rect(0, 0, width, height);
       }
     }
 
