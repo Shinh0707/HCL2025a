@@ -4,7 +4,9 @@ import jp.nyatla.nyar4psg.*;
 class GameData{
     GameSettings settings;
     HPUI hpui;
-    PImage[] markerImages;
+    GamePostEffect postEffect;
+    //PImage[] markerImages;
+    PImage markerImagePerfect;
     Player[] players;
     Capture cam;
     MultiMarker nya;
@@ -20,12 +22,14 @@ class GameData{
         players[0] = new Player(0, settings.MAX_HP);
         players[1] = new Player(1, settings.MAX_HP);
         hpui = new HPUI(settings.MAX_HP);
+        postEffect = new GamePostEffect();
         nya = new MultiMarker(parent, width, height, settings.MARKER_FILE, NyAR4PsgConfig.CONFIG_PSG);
         nya.setLostDelay(1);
-        markerImages = new PImage[settings.MARKER_COUNT];
+        markerImagePerfect = parent.loadImage("AR/AR_perfect.jpg");
+        //markerImages = new PImage[settings.MARKER_COUNT];
         for (int i = 0; i < settings.MARKER_COUNT; i++){
             nya.addNyIdMarker(i,80);
-            markerImages[i] = parent.loadImage("AR/" + i + ".jpg");
+            //markerImages[i] = parent.loadImage("AR/" + i + ".jpg");
         }
         nya.addARMarker("data/patt.hiro",80);
         nya.addARMarker("data/patt.kanji",80);
@@ -40,7 +44,23 @@ class GameData{
 
     void pastdraw(){
         hpui.draw(this);
+        postEffect.draw(this);
     }
+}
+
+class GamePostEffect{
+  NoiseShader noiseShader;
+  PImage img;
+
+  GamePostEffect(){
+    noiseShader = new NoiseShader(width,height);
+    img = createImage(width,height,RGB);
+  }
+
+  void draw(GameData data){
+    capture(img);
+    noiseShader.apply(img, 1.0-data.players[0].hp/float(data.settings.MAX_HP), 1.0-data.players[1].hp/float(data.settings.MAX_HP));
+  }
 }
 
 class GameSettings{

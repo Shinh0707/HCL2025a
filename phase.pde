@@ -62,6 +62,9 @@ class CodingPhase extends TimerPhase{
     void _draw(GameData data){
         fill(0,0,0);
         rect(0,0,width,height);
+        float asp = aspect(data.markerImagePerfect);
+        image(data.markerImagePerfect, 0, int((height-width/asp)/2), width, width/asp);
+        /*
         {
             int cols = BREAK_INDEX;
             int rows = (data.settings.MARKER_COUNT + cols - 1) / cols;
@@ -85,6 +88,7 @@ class CodingPhase extends TimerPhase{
                 image(data.markerImages[i], offsetX + x, offsetY + y, IMG_W, IMG_H);
             }
         }
+        */
         showText(data, "パズルタイマー: 残り " + remainingTime() + "秒");
     }
 }
@@ -204,7 +208,6 @@ class EffectPhase extends Phase{
     boolean draw(GameData data){
         // HPUI.draw()
         image(result, 0, 0);
-        data.nya.detect(data.cam); // これをはじめに呼び出す
         if (solved != 0){
             if (solved%2 == 1){
                 data.players[0].drawAction(data);

@@ -1,11 +1,15 @@
+StartScreen scn;
 Phase[] phases;
 GameData data;
 int phase_i;
 
 void setup(){
-    size(640,480,P3D);
+    //size(640,480,P3D);
+    //colorMode(RGB, 255);
+    size(640, 480, P3D);
     colorMode(RGB, 255);
     println(MultiMarker.VERSION);
+    scn = new StartScreen();
     data = new GameData(this);
     phases = new Phase[5];
     phases[0] = new GamePhase();
@@ -17,10 +21,12 @@ void setup(){
 }
 
 void draw(){
-    data.draw();
-    if(phases[phase_i].draw(data)){
-        phase_i = (phase_i + 1)%5;
-        phases[phase_i].reset(data);
+    if (scn.draw()){
+        data.draw();
+        if(phases[phase_i].draw(data)){
+            phase_i = (phase_i + 1)%5;
+            phases[phase_i].reset(data);
+        }
+        data.pastdraw();
     }
-    data.pastdraw();
 }

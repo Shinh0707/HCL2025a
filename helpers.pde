@@ -34,13 +34,8 @@ PVector getMarkerCenterScreen(MultiMarker nya, int i_id){
     return nya.marker2ScreenCoordSystem(i_id, center.x, center.y, center.z);
 }
 
-void showText(GameData data, String msg){
-    fill(0, 150);
-    rect(0, height - 100, width, 100);
-
-    fill(255);
-    textSize(24);
-    textFont(data.font);
-    textAlign(CENTER, CENTER);
-    text(msg, width / 2, height - 50);
+void capture(PImage dst){
+    loadPixels();
+    dst.pixels = pixels;
+    dst.updatePixels();
 }
