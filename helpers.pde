@@ -10,8 +10,14 @@ Capture setupCamera(PApplet parent, int _frameRate){
                 continue;
             }
             println("Use Camera ["+camera+"]");
-            return new Capture(parent, width, height, camera, _frameRate);
+            try {
+                Capture cam = new Capture(parent, width, height, camera, _frameRate);
+                return cam;
+            } catch (Exception e) {
+                continue;
+            }
         }
+        return setupCamera(parent, _frameRate);
     }
     println("カメラが見つかりませんでした。");
     exit();
