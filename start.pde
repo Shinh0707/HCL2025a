@@ -57,17 +57,27 @@ class StartScreen{
             }
         );
         capture(cimg);
-        ns.apply(cimg,0.3,0.3);
+        ns.apply(cimg,0.5,0.5);
         return false;
     }
 }
 
 class InfoScreen{
+    final String howtoplaypath = "images/HowToPlay.png";
+    RImg img;
     boolean closed;
     InfoScreen(){
+        img = new RImg(loadImage(howtoplaypath),0.01,0.01,0.01);
         closed = false;
     }
     boolean draw(){
+        img.apply(
+            width,
+            height,
+            (img,x,y,w,h) -> {
+                image(img,x,y,w,h);
+            }
+        );
         fill(255);
         rectButton(width-int(height*0.05*1.5),int(width*0.01),int(height*0.05),int(height*0.05),0,"X",()->{
             closed = true;

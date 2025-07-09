@@ -57,7 +57,7 @@ class CodingPhase extends TimerPhase{
     final int BREAK_INDEX = 5; // 折り返し位置（5枚目で改行）
 
     float maxTime(){
-        return 20.0;
+        return DEBUG_MODE? 1.0:20.0;
     }
     void _draw(GameData data){
         fill(0,0,0);
@@ -89,7 +89,7 @@ class CodingPhase extends TimerPhase{
             }
         }
         */
-        showText(data, "制限時間: 残り " + remainingTime() + "秒");
+        showText(data, "制限時間: 残り " + remainingTime() + "秒", color(255,255,255));
     }
 }
 
@@ -194,6 +194,7 @@ class EffectPhase extends Phase{
     int solved = 0;
     PImage result;
     String showedText = "";
+    int showedTextColor;
     boolean ended = false;
     boolean p0ended = false;
     boolean p1ended = false;
@@ -204,6 +205,7 @@ class EffectPhase extends Phase{
         p1ended = false;
         result = data.cam.get(0,0,width, height);
         showedText = "";
+        showedTextColor = 0;
         startTime = millis();
         intarvalStartTime = millis() - 5000;
         solved = 0;
@@ -228,7 +230,7 @@ class EffectPhase extends Phase{
             }
         }
         if (showedText.length() != 0){
-          showText(data, showedText);
+          showText(data, showedText, showedTextColor);
         }
         if (millis() - intarvalStartTime < 5*1000){
             return false;
@@ -262,6 +264,7 @@ class EffectPhase extends Phase{
 
     HackAction hack(int id0, int id1){
         boolean isatk = HackSettings.isAttackHack(id1);
+        showedTextColor = color(255,255,255);
         switch (id0) {
             case 0:
                 int choice = int(random(0,2));
@@ -300,12 +303,12 @@ class EffectPhase extends Phase{
                 };
             case 5:
                 return (data, p0, p1) -> {
-                    showedText = "プレイヤー"+(p0.id+1)+"はプレイヤー"+(p1.id+1)+"からパーツを"+1+"個奪取する";
+                    showedText = "Player"+(p0.id+1)+"はPlayer"+(p1.id+1)+"からパーツを"+1+"個奪取する";
                     return true;
                 };
             case 6:
                 return (data, p0, p1) -> {
-                    showedText = "プレイヤー"+(p0.id+1)+"はガードした";
+                    showedText = "Player"+(p0.id+1)+"はガードした";
                     return true;
                 };
             case 7:
@@ -316,7 +319,7 @@ class EffectPhase extends Phase{
                     };
                 }
                 return (data, p0, p1) -> {
-                    showedText = "プレイヤー"+(p0.id+1)+"は攻撃に失敗した";
+                    showedText = "Player"+(p0.id+1)+"は攻撃に失敗した";
                     return false;
                 };
             case 8:
@@ -326,13 +329,13 @@ class EffectPhase extends Phase{
                     };
                 }
                 return (data, p0, p1) -> {
-                    showedText = "プレイヤー"+(p0.id+1)+"は攻撃に失敗した";
+                    showedText = "Player"+(p0.id+1)+"は攻撃に失敗した";
                     return false;
                 };
             case 9:
                 return (data, p0, p1) -> {
                     data.players[p0.id].stack(2);
-                    showedText = "プレイヤー"+(p0.id+1)+"は1溜めた";
+                    showedText = "Player"+(p0.id+1)+"は1溜めた";
                     return true;
                 };
             default:
@@ -346,11 +349,22 @@ class EffectPhase extends Phase{
     }
     boolean damage(GameData data, int target, float value, boolean cantstop){
         if ((data.players[target].detected_id == 6) && (!cantstop)){
-            showedText = "プレイヤー"+(target+1)+"は攻撃を防いだ";
+            showedTextColor = color(80,120,200);
+            showedText = "Player"+(target+1)+"は攻撃を防いだ";
             return false;
         }else{
             float dmg = value*(1+data.players[1-target].stacked);
-            showedText = "プレイヤー"+(target+1)+"は"+dmg+"の障害を受けた";
+            String[] msgs = {
+                "軽微な",
+                "中程度の",
+                "大きな",
+                "致命な",
+                "危険な",
+                "異常な",
+            };
+            String msg = msgs[min(msgs.length-1,int(dmg)-1)];
+            showedTextColor = (int(dmg)-1 > 3)?color(255,0,0):color(255,255,255);
+            showedText = "Player"+(target+1)+"は"+msg+"障害を受けた";
             data.hpui.registerDamage(data.players[target].id, dmg);
             data.players[target].reduceHP(dmg);
             return true;
@@ -361,7 +375,7 @@ class EffectPhase extends Phase{
     }
     void get(GameData data, int target, int value, boolean isAdded){
         int val = int(value*(1+data.players[target].stacked));
-        String txt = "プレイヤー"+(target+1)+"はパーツを"+val+"個獲得する";
+        String txt = "Player"+(target+1)+"はパーツを"+val+"個獲得する";
         if (isAdded){
             showedText += "\n"+txt;
         }else{
@@ -373,7 +387,7 @@ class EffectPhase extends Phase{
     }
     void lost(GameData data, int target, int value, boolean isAdded){
         int val = int(value*(1+data.players[1-target].stacked));
-        String txt = "プレイヤー"+(target+1)+"はパーツを"+val+"個失う";
+        String txt = "Player"+(target+1)+"はパーツを"+val+"個失う";
         if (isAdded){
             showedText += "\n"+txt;
         }else{

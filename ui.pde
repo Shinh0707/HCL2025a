@@ -13,7 +13,7 @@ class NoiseShader{
     }
 }
 
-void showText(GameData data, String msg){
+void showText(GameData data, String msg, int col){
     strokeWeight(1);
     stroke(255);
     fill(0, 150);
@@ -23,6 +23,7 @@ void showText(GameData data, String msg){
     textSize(24);
     textFont(data.font);
     textAlign(CENTER, CENTER);
+    fill(col);
     text(msg, width / 2, height - 50);
 }
 

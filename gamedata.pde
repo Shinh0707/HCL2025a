@@ -48,7 +48,7 @@ class GameData{
 
     void pastdraw(){
         hpui.draw(this);
-        //postEffect.draw(this);
+        postEffect.draw(this);
     }
 }
 
@@ -73,7 +73,7 @@ class GameSettings{
     final String MARKER_FILE = "data/camera_para.dat";
     final int FRAME_RATE = 30;
     final int TEXT_FONTSIZE = 20;
-    final int MAX_HP = 9;
+    final int MAX_HP = DEBUG_MODE? 2:9;
 
     PFont createTextFont(){
         return createTextFont(TEXT_FONTSIZE);

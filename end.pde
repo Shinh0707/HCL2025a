@@ -21,12 +21,12 @@ class EndScreen{
         textAlign(CENTER, CENTER);
         float p = 0.3;
         if (data.players[0].isAlive()){
-            text("プレイヤー1 が 勝利した", width/2, height/2);
+            text(">> SystemDown [Player2]\nPlayer1 が 勝利した", width/2, height/2);
         } else if (data.players[1].isAlive()){
-            text("プレイヤー2 が 勝利した", width/2, height/2);
+            text(">> SystemDown [Player1]\nPlayer2 が 勝利した", width/2, height/2);
         } else {
             p = 0.5;
-            text("勝者 は いなかった", width/2, height/2);
+            text(">> SystemDown [Player1]\n>> SystemDown [Player2]\n>> 戦闘を中断します...", width/2, height/2);
         }
         buttonBox.apply(
             width,
