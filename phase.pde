@@ -57,7 +57,7 @@ class CodingPhase extends TimerPhase{
     final int BREAK_INDEX = 5; // 折り返し位置（5枚目で改行）
 
     float maxTime(){
-        return 1.0;
+        return 20.0;
     }
     void _draw(GameData data){
         fill(0,0,0);
