@@ -92,7 +92,7 @@ class Player{
     Player(int id, int maxHp){
         this.id = id;
         int x = width/4;
-        if (id == 0){
+        if (id == 1){
             x = width - x;
         }
         markerPos = new PVector(x,height/2,0);
