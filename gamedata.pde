@@ -44,7 +44,7 @@ class GameData{
 
     void pastdraw(){
         hpui.draw(this);
-        postEffect.draw(this);
+        //postEffect.draw(this);
     }
 }
 
@@ -69,7 +69,7 @@ class GameSettings{
     final String MARKER_FILE = "data/camera_para.dat";
     final int FRAME_RATE = 30;
     final int TEXT_FONTSIZE = 20;
-    final int MAX_HP = 2;
+    final int MAX_HP = 9;
 
     PFont createTextFont(){
         return createTextFont(TEXT_FONTSIZE);
@@ -86,6 +86,8 @@ class Player{
     EffectData activeEffect = null;
     float hp;
     int stacked = 0;
+    boolean effectEnded = false;
+    boolean effectStarted = false;
 
     Player(int id, int maxHp){
         this.id = id;
@@ -108,6 +110,8 @@ class Player{
     void ready(){
         activeEffect = null;
         detected_id = -1;
+        effectEnded = false;
+        effectStarted = false;
         stacked = max(0, stacked-1);
     }
     boolean isDetected(){
@@ -119,16 +123,21 @@ class Player{
         setAction(id);
     }
     boolean drawAction(GameData data){
-        if (activeEffect == null){
+        if (activeEffect == null || !effectStarted){
             return true;
         }
-        return activeEffect.draw(data);
+        if (effectEnded) return true;
+        if(activeEffect.draw(data)){
+          effectEnded = true;
+        }
+        return effectEnded;
     }
     void startAction(PVector opponentPos){
         if (activeEffect == null){
             setAction(-1);
         }
         activeEffect.start(markerPos, opponentPos);
+        effectStarted = true;
     }
     void setAction(int detected_id){
       println("Activate "+detected_id);
@@ -137,34 +146,34 @@ class Player{
           activeEffect =new EffectData0();
           break;
         case 1:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData1();
           break;
         case 2:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData2();
           break;
         case 3:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData3();
           break;
         case 4:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData4();
           break;
         case 5:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData5();
           break;
         case 6:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData6();
           break;
         case 7:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData7();
           break;
         case 8:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData8();
           break;
         case 9:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData9();
           break;
         default:
-          activeEffect =new EffectData0();
+          activeEffect =new EffectData1();
           break;
       }
     }

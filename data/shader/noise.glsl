@@ -24,15 +24,15 @@ void main() {
     vec2 uv = gl_FragCoord.xy/resolution.xy;
     uv.y = 1.0-uv.y;
     float p = mix(ps.x,ps.y,step(0.5, uv.x));
-    float s = pow(3.0,p)-1.0;
+    float s = pow(2.0,p)-1.0;
     // --- グリッチエフェクトのパラメータ設定 ---
     float blockGlitchIntensity = 0.05*s;      // ブロックノイズの最大オフセット強度
     float lineGlitchIntensity = 0.08*s;       // スキャンラインの最大オフセット強度
 
     // 時間に基づき、グリッチを断続的に発生させるためのトリガー
     // u_timeをシードとした乱数が特定の値を超えた場合にグリッチを発生させる
-    float largeGlitchTrigger = pow(step(mix(1.0,0.7,s/2.0)*step(p,0.99), random(vec2(u_time * 0.1))), 2.0);
-    float smallGlitchTrigger = step(mix(1.0,0.7,s/2.0)*step(p,0.99), random(vec2(u_time * 1.5)));
+    float largeGlitchTrigger = pow(step(mix(1.0,0.8,s)*step(p,0.99), random(vec2(u_time * 0.1))), 2.0);
+    float smallGlitchTrigger = step(mix(1.0,0.8,s)*step(p,0.99), random(vec2(u_time * 1.5)));
 
     // UV座標のオフセットを初期化
     vec2 uvOffset = vec2(0.0);

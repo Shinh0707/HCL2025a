@@ -43,7 +43,7 @@ abstract class TimerPhase extends Phase{
 
 class StandbyPhase extends TimerPhase{
     float maxTime(){
-        return 1.0;
+        return 0.5;
     }
     void _draw(GameData data){
         //println(" at standby");
@@ -57,7 +57,7 @@ class CodingPhase extends TimerPhase{
     final int BREAK_INDEX = 5; // 折り返し位置（5枚目で改行）
 
     float maxTime(){
-        return 1.0;
+        return 20.0;
     }
     void _draw(GameData data){
         fill(0,0,0);
@@ -190,49 +190,63 @@ class HackPhase extends Phase{
 class EffectPhase extends Phase{
     int startTime = 0;
     int intarvalStartTime = 0;
-    int maxTime = 2*1000;
+    int maxTime = 5*1000;
     int solved = 0;
     PImage result;
     String showedText = "";
+    boolean ended = false;
+    boolean p0ended = false;
+    boolean p1ended = false;
     void reset(GameData data){
         println("effect activated");
+        ended = false;
+        p0ended = false;
+        p1ended = false;
         result = data.cam.get(0,0,width, height);
         showedText = "";
         startTime = millis();
-        intarvalStartTime = millis() - 2000;
+        intarvalStartTime = millis() - 5000;
         solved = 0;
     }
     int remainTime(){
         return maxTime - (millis() - startTime);
     }
     boolean draw(GameData data){
+        if (ended) return true;
         // HPUI.draw()
         image(result, 0, 0);
         if (solved != 0){
             if (solved%2 == 1){
-                data.players[0].drawAction(data);
+                if (!p0ended){
+                    p0ended = data.players[0].drawAction(data);
+                }
             }
             if (solved/2 == 1){
-                data.players[1].drawAction(data);
+                if (!p1ended){
+                    p1ended = data.players[1].drawAction(data);
+                }
             }
         }
         if (showedText.length() != 0){
           showText(data, showedText);
         }
-        if (millis() - intarvalStartTime < 2*1000){
+        if (millis() - intarvalStartTime < 5*1000){
             return false;
         }
         if (solved != 3){
             PVector center0 = data.players[0].markerPos;// 画面上でのマーカーの中心位置
             PVector center1 = data.players[1].markerPos;// 画面上でのマーカーの中心位置
-            if (solved%2 != 1){
-                hack(data.players[0].detected_id, data.players[1].detected_id).accept(data, data.players[0], data.players[1]);
-                data.players[0].startAction(center1);
+            
+            if ((solved%2 != 1) && !((data.players[1].detected_id == 6) && (solved/2 != 1))){
+                if (hack(data.players[0].detected_id, data.players[1].detected_id).accept(data, data.players[0], data.players[1])){
+                    data.players[0].startAction(center1);
+                }
                 solved += 1;
                 println("P1 solved");
             } else if(solved/2 != 1){
-                hack(data.players[1].detected_id, data.players[0].detected_id).accept(data, data.players[1], data.players[0]);
-                data.players[1].startAction(center0);
+                if(hack(data.players[1].detected_id, data.players[0].detected_id).accept(data, data.players[1], data.players[0])){
+                    data.players[1].startAction(center0);
+                }
                 solved += 2;
                 println("P2 solved");
             }
@@ -240,7 +254,10 @@ class EffectPhase extends Phase{
             return false;
         }
         // 各エフェクトにつき1つの関数を作成する
-        return (data.players[0].drawAction(data) && data.players[1].drawAction(data)) && (solved == 3);
+        if ((p0ended && p1ended) && (solved == 3)){
+            ended = true;
+        }
+        return ended;
     }
 
     HackAction hack(int id0, int id1){
@@ -252,78 +269,91 @@ class EffectPhase extends Phase{
                     case 0:
                         return (data, p0, p1) -> {
                             damage(data, p0.id, 1);
+                            return true;
                         };
                     default:
                         return (data, p0, p1) -> {
                             lost(data, p0.id, 2);
+                            return true;
                         };
                 }
             case 1:
                 return (data, p0, p1) -> {
-                    damage(data, p1.id, 2);
+                    return damage(data, p1.id, 2);
                 };
             case 2:
                 return (data, p0, p1) -> {
-                    damage(data, p1.id, 1);
+                    boolean success = damage(data, p1.id, 1);
                     get(data, p0.id, 1, true);
+                    return success;
                 };
             case 3:
                 return (data, p0, p1) -> {
-                    damage(data, p1.id, 1);
+                    boolean success = damage(data, p1.id, 1);
                     lost(data, p1.id, 1, true);
+                    return success;
                 };
             case 4:
                 return (data, p0, p1) -> {
                     get(data, p0.id, 2);
+                    return true;
                 };
             case 5:
                 return (data, p0, p1) -> {
                     showedText = "プレイヤー"+(p0.id+1)+"はプレイヤー"+(p1.id+1)+"からパーツを"+1+"個奪取する";
+                    return true;
                 };
             case 6:
                 return (data, p0, p1) -> {
                     showedText = "プレイヤー"+(p0.id+1)+"はガードした";
+                    return true;
                 };
             case 7:
                 if (!isatk){
                     return (data, p0, p1) -> {
                         damage(data, p1.id, 4, true);
+                        return true;
                     };
                 }
                 return (data, p0, p1) -> {
                     showedText = "プレイヤー"+(p0.id+1)+"は攻撃に失敗した";
+                    return false;
                 };
             case 8:
                 if (isatk){
                     return (data, p0, p1) -> {
-                        damage(data, p1.id, 3);
+                        return damage(data, p1.id, 3);
                     };
                 }
                 return (data, p0, p1) -> {
                     showedText = "プレイヤー"+(p0.id+1)+"は攻撃に失敗した";
+                    return false;
                 };
             case 9:
                 return (data, p0, p1) -> {
                     data.players[p0.id].stack(2);
                     showedText = "プレイヤー"+(p0.id+1)+"は1溜めた";
+                    return true;
                 };
             default:
                 return (data, p0, p1) -> {
-                    damage(data, p1.id, 1);
+                    return damage(data, p1.id, 1);
                 };
         }
     }
-    void damage(GameData data, int target, float value){
-        damage(data, target, value, false);
+    boolean damage(GameData data, int target, float value){
+        return damage(data, target, value, false);
     }
-    void damage(GameData data, int target, float value, boolean cantstop){
+    boolean damage(GameData data, int target, float value, boolean cantstop){
         if ((data.players[target].detected_id == 6) && (!cantstop)){
             showedText = "プレイヤー"+(target+1)+"は攻撃を防いだ";
+            return false;
         }else{
             float dmg = value*(1+data.players[1-target].stacked);
             showedText = "プレイヤー"+(target+1)+"は"+dmg+"の障害を受けた";
             data.hpui.registerDamage(data.players[target].id, dmg);
             data.players[target].reduceHP(dmg);
+            return true;
         }
     }
     void get(GameData data, int target, int value){
@@ -353,7 +383,7 @@ class EffectPhase extends Phase{
 }
 
 interface HackAction{
-    void accept(GameData data, Player p0, Player p1);
+    boolean accept(GameData data, Player p0, Player p1);
 }
 /*
 void drawAction0(GameData data, PVector player, PVector opponent){

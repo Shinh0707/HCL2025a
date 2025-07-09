@@ -8,6 +8,8 @@ void setup(){
     //size(640,480,P3D);
     //colorMode(RGB, 255);
     size(1080, 780, P3D);
+    smooth();
+    frameRate(60);
     colorMode(RGB, 255);
     println(MultiMarker.VERSION);
     scn = new StartScreen();
@@ -23,6 +25,10 @@ void setup(){
 }
 
 void draw(){
+    rectMode(CORNER);
+    noStroke();
+    strokeWeight(1);
+    background(0);
     if (esn != null){
         if (esn.draw(data)){
             scn = new StartScreen();
@@ -37,17 +43,20 @@ void draw(){
             phase_i = 0;
         }
         return;
-    }
-    if (scn.draw()){
-        data.draw();
-        if(phases[phase_i].draw(data)){
-            if ((phase_i == 4) && !(data.players[0].isAlive() && data.players[1].isAlive())){
-                esn = new EndScreen();
-                return;
+    }else{
+        if (scn.draw()){
+            data.draw();
+            if(phases[phase_i].draw(data)){
+                fill(0,255);
+                rect(0,0,width,height);
+                if ((phase_i == 4) && !(data.players[0].isAlive() && data.players[1].isAlive())){
+                    esn = new EndScreen();
+                    return;
+                }
+                phase_i = (phase_i + 1)%5;
+                phases[phase_i].reset(data);
             }
-            phase_i = (phase_i + 1)%5;
-            phases[phase_i].reset(data);
+            data.pastdraw();
         }
-        data.pastdraw();
     }
 }

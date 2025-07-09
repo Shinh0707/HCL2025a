@@ -28,7 +28,7 @@ class HPUI {
       float x = (i == 0) ? margin : width - barWidth - margin;
       int r = (i == 0) ? 255 : 0;
       int b = (i == 1) ? 255 : 0;
-
+      strokeWeight(1);
       // 背景バー（減少部分を見せる用：灰色で背景の代用）
       noStroke();
       fill(80);  // 背景色（透明代用）

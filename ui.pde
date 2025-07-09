@@ -14,6 +14,8 @@ class NoiseShader{
 }
 
 void showText(GameData data, String msg){
+    strokeWeight(1);
+    stroke(255);
     fill(0, 150);
     rect(0, height - 100, width, 100);
 
