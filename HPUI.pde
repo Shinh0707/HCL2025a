@@ -47,7 +47,7 @@ class HPUI {
       fill(255);
       textSize(21);
       textAlign((i == 0) ? LEFT : RIGHT, CENTER);
-      text("Hacked: " + int((1 - displayHP[i] / maxHP)*100)+"%", (i == 0) ? x : x + barWidth, margin + barHeight + 12);
+      text("P"+(i+1)+" Hacked: " + int((1 - displayHP[i] / maxHP)*100)+"%", (i == 0) ? x : x + barWidth, margin + barHeight + 12);
     }
 
     // ダメージ演出

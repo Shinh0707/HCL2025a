@@ -57,7 +57,7 @@ class CodingPhase extends TimerPhase{
     final int BREAK_INDEX = 5; // 折り返し位置（5枚目で改行）
 
     float maxTime(){
-        return 10.0;
+        return 1.0;
     }
     void _draw(GameData data){
         fill(0,0,0);
@@ -89,13 +89,13 @@ class CodingPhase extends TimerPhase{
             }
         }
         */
-        showText(data, "パズルタイマー: 残り " + remainingTime() + "秒");
+        showText(data, "制限時間: 残り " + remainingTime() + "秒");
     }
 }
 
 class HackPhase extends Phase{
     int startTime = 0;
-    final int maxTime = 5*1000;
+    final int maxTime = 2*1000;
     PImage leftImg;
     PImage rightImg;
     PImage dummyImg;
@@ -190,7 +190,7 @@ class HackPhase extends Phase{
 class EffectPhase extends Phase{
     int startTime = 0;
     int intarvalStartTime = 0;
-    int maxTime = 5*1000;
+    int maxTime = 2*1000;
     int solved = 0;
     PImage result;
     String showedText = "";
@@ -199,7 +199,7 @@ class EffectPhase extends Phase{
         result = data.cam.get(0,0,width, height);
         showedText = "";
         startTime = millis();
-        intarvalStartTime = millis() - 5000;
+        intarvalStartTime = millis() - 2000;
         solved = 0;
     }
     int remainTime(){
@@ -219,7 +219,7 @@ class EffectPhase extends Phase{
         if (showedText.length() != 0){
           showText(data, showedText);
         }
-        if (millis() - intarvalStartTime < 5*1000){
+        if (millis() - intarvalStartTime < 2*1000){
             return false;
         }
         if (solved != 3){
@@ -282,6 +282,7 @@ class EffectPhase extends Phase{
                 };
             case 6:
                 return (data, p0, p1) -> {
+                    showedText = "プレイヤー"+(p0.id+1)+"はガードした";
                 };
             case 7:
                 if (!isatk){

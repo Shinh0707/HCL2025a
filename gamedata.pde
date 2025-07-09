@@ -69,7 +69,7 @@ class GameSettings{
     final String MARKER_FILE = "data/camera_para.dat";
     final int FRAME_RATE = 30;
     final int TEXT_FONTSIZE = 20;
-    final int MAX_HP = 9;
+    final int MAX_HP = 2;
 
     PFont createTextFont(){
         return createTextFont(TEXT_FONTSIZE);
@@ -98,6 +98,9 @@ class Player{
     }
     void reduceHP(float value){
         hp = max(0,hp-value);
+    }
+    boolean isAlive(){
+      return hp > 0;
     }
     void stack(int value){
         stacked += value;
