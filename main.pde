@@ -33,13 +33,10 @@ void draw(){
         if (esn.draw(data)){
             scn = new StartScreen();
             esn = null;
-            data = new GameData(this);
-            phases = new Phase[5];
-            phases[0] = new GamePhase();
-            phases[1] = new StandbyPhase();
-            phases[2] = new CodingPhase();
-            phases[3] = new HackPhase();
-            phases[4] = new EffectPhase();
+            data.reset();
+            for (Phase phase: phases){
+                phase.reset(data);
+            }
             phase_i = 0;
         }
         return;

@@ -18,10 +18,6 @@ class GameData{
         settings = new GameSettings();
         cam = setupCamera(parent, settings.FRAME_RATE);
         font = settings.createTextFont();
-        players = new Player[2];
-        players[0] = new Player(0, settings.MAX_HP);
-        players[1] = new Player(1, settings.MAX_HP);
-        hpui = new HPUI(settings.MAX_HP);
         postEffect = new GamePostEffect();
         nya = new MultiMarker(parent, width, height, settings.MARKER_FILE, NyAR4PsgConfig.CONFIG_PSG);
         nya.setLostDelay(1);
@@ -31,9 +27,17 @@ class GameData{
             nya.addNyIdMarker(i,80);
             //markerImages[i] = parent.loadImage("AR/" + i + ".jpg");
         }
-        nya.addARMarker("data/patt.hiro",80);
-        nya.addARMarker("data/patt.kanji",80);
-        cam.start();
+        //nya.addARMarker("data/patt.hiro",80);
+        //nya.addARMarker("data/patt.kanji",80);
+        //cam.start();
+        reset();
+    }
+
+    void reset(){
+        players = new Player[2];
+        players[0] = new Player(0, settings.MAX_HP);
+        players[1] = new Player(1, settings.MAX_HP);
+        hpui = new HPUI(settings.MAX_HP);
     }
 
     void draw(){

@@ -12,6 +12,7 @@ Capture setupCamera(PApplet parent, int _frameRate){
             println("Use Camera ["+camera+"]");
             try {
                 Capture cam = new Capture(parent, width, height, camera, _frameRate);
+                cam.start();
                 return cam;
             } catch (Exception e) {
                 continue;
